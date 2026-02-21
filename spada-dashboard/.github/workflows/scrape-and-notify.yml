@@ -1,0 +1,40 @@
+name: Scrape and Notify SPADA
+
+on:
+  schedule:
+    # Runs every hour
+    - cron: '0 * * * *'
+  workflow_dispatch: # Allows manual triggering
+
+jobs:
+  scrape_and_notify:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.x' # Use the latest Python 3.x version
+
+    - name: Install dependencies
+      run: |
+        pip install -r requirements.txt
+        playwright install --with-deps # Install Playwright browsers with dependencies
+
+    - name: Run scraper
+      env:
+        SPADA_USERNAME: ${{ secrets.SPADA_USERNAME }}
+        SPADA_PASSWORD: ${{ secrets.SPADA_PASSWORD }}
+        discord_webhook_url: ${{ secrets.DISCORD_WEBHOOK_URL }} # Using the correct environment variable name
+      run: python scraper.py
+
+    - name: Commit and push changes if any
+      run: |
+        git config user.name github-actions
+        git config user.email github-actions@github.com
+        git add course_data.json # Assuming this is the file that gets updated
+        git commit -m "Update course data from scraper" || echo "No changes to commit"
+        git push || echo "No changes to push"
