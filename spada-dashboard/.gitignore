@@ -1,5 +1,11 @@
 # Environment variables
 .env
+login.env
+ai_config.json
+
+# Data files
+course_data.json
+task_status.json
 
 # Python
 __pycache__/
