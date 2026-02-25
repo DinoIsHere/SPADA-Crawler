@@ -1,0 +1,10 @@
+.venv
+__pycache__
+*.pyc
+.git
+.github
+spada_dashboard.db
+*.log
+.env
+login.env
+node_modules

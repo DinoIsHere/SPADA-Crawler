@@ -41,15 +41,15 @@ Add automation modules for attendance and multiple-choice assignments (quizzes) 
 - [ ] Ensure AI only targets "Multiple Choice" quizzes as requested (titles like "Post Test", "Quiz").
 - [ ] Add logging for all automated actions.
 
-## 6. Account System & Security (Future)
-- [ ] **Database Setup**: 
-    - Choose between MongoDB (Atlas) or SQLite.
-    - Create users collection/table to store: 
-        - username, password_hash`n        - spada_credentials (Encrypted)
-        - discord_webhook, gemini_api_key`n- [ ] **Authentication**: 
-    - Implement JWT or Session-based authentication in FastAPI.
-    - Create a retro-styled Windows 98 Login page.
-- [ ] **Credential Management**: 
-    - Refactor main.py and scraper.py to fetch credentials from the database instead of local .env files.
-    - Add 'My Profile' settings to the dashboard to update these credentials securely.
+## 6. Multi-Person & Cloud Sync (Free Tier)
+- [x] **Database Strategy**: 
+    - Use "Git-Persistence" via GitHub Actions.
+    - Data stored in `course_data.json` and `ai_config.json`.
+    - Updates are committed/pushed by GitHub Actions.
+- [ ] **Cloud Hosting**: 
+    - Deploy to Hugging Face Spaces (Docker).
+    - Use GitHub Actions for scheduled background scraping.
+- [ ] **Privacy Layer**: 
+    - Implement a simple "System Password" for shared access.
+    - Refactor main.py to handle sensitive env vars in cloud secrets.
 

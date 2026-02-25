@@ -237,13 +237,53 @@ document.addEventListener('DOMContentLoaded', async () => {
         const settingsList = document.getElementById('settings-course-list');
         if (!settingsList) return;
 
-        settingsList.innerHTML = courses.map(course => `
-            <div class="filter-item">
-                <input type="checkbox" checked>
-                <span>${course.course_title}</span>
-            </div>
-        `).join('');
+        settingsList.innerHTML = courses.map(course => {
+            const config = aiConfig.auto_courses[course.course_title] || { enabled: true, attendance: false, quiz: false };
+            return `
+                <tr style="font-size: 10px; border-bottom: 1px solid #ccc;">
+                    <td style="padding: 4px; border: 1px solid #ddd;">${course.course_title}</td>
+                    <td style="text-align: center; border: 1px solid #ddd;">
+                        <input type="checkbox" ${config.enabled !== false ? 'checked' : ''}
+                               onchange="window.updateDeepConfig('${course.course_title}', 'enabled', this.checked)">
+                    </td>
+                    <td style="text-align: center; border: 1px solid #ddd;">
+                        <input type="checkbox" ${config.attendance ? 'checked' : ''}
+                               onchange="window.updateDeepConfig('${course.course_title}', 'attendance', this.checked)">
+                    </td>
+                    <td style="text-align: center; border: 1px solid #ddd;">
+                        <input type="checkbox" ${config.quiz ? 'checked' : ''}
+                               onchange="window.updateDeepConfig('${course.course_title}', 'quiz', this.checked)">
+                    </td>
+                </tr>
+            `;
+        }).join('');
     }
+
+    async function saveSettings() {
+        try {
+            const response = await fetch('/ai-config', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(aiConfig)
+            });
+            if (response.ok) {
+                alert('Registry Configuration Saved!');
+                loadAIConfig(); // Refresh views
+            }
+        } catch (error) {
+            console.error('Error saving settings:', error);
+            alert('Settings failed to save.');
+        }
+    }
+
+    window.updateDeepConfig = (title, field, value) => {
+        if (!aiConfig.auto_courses[title]) {
+            aiConfig.auto_courses[title] = { enabled: true, attendance: false, quiz: false };
+        }
+        aiConfig.auto_courses[title][field] = value;
+    };
+
+    document.getElementById('save-settings-btn')?.addEventListener('click', saveSettings);
 
     searchInput.addEventListener('input', (e) => {
         const searchTerm = e.target.value.toLowerCase();
@@ -307,14 +347,62 @@ document.addEventListener('DOMContentLoaded', async () => {
     // --- AI Configuration Logic ---
     let aiConfig = { ai_model: 'gemini-1.5-flash', auto_courses: {} };
 
+    // --- Settings Tab Logic ---
+    window.switchTab = (tabName) => {
+        document.querySelectorAll('#settings-section .tab').forEach(t => t.classList.remove('active'));
+        document.querySelectorAll('#settings-section .tab-content').forEach(c => c.style.display = 'none');
+
+        const clickedTab = Array.from(document.querySelectorAll('#settings-section .tab')).find(t => t.textContent.toLowerCase().includes(tabName.replace('-', ' ')));
+        if (clickedTab) clickedTab.classList.add('active');
+        const content = document.getElementById(`tab-${tabName}`);
+        if (content) content.style.display = 'block';
+    };
+
+    async function saveProfile() {
+        const payload = {
+            spada_username: document.getElementById('prof-spada-user').value,
+            spada_password: document.getElementById('prof-spada-pass').value,
+            discord_webhook: document.getElementById('prof-discord-hook').value,
+            gemini_api_key: document.getElementById('prof-gemini-key').value
+        };
+
+        try {
+            const response = await fetch('/update-profile', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            });
+            if (response.ok) {
+                alert('Profile updated successfully!');
+                document.getElementById('prof-spada-pass').value = '';
+                document.getElementById('prof-gemini-key').value = '';
+            }
+        } catch (error) {
+            console.error('Error updating profile:', error);
+        }
+    }
+
+    document.getElementById('save-profile-btn')?.addEventListener('click', saveProfile);
+
     async function loadAIConfig() {
         try {
             const response = await fetch('/ai-config');
             aiConfig = await response.json();
-            document.getElementById('ai-model-select').value = aiConfig.ai_model;
+
+            // Also load other profile data here for simplicity
+            const dataRes = await fetch('/data');
+            const data = await dataRes.json();
+
+            // Fill profile fields (we need to adjust the /data endpoint or add a /profile endpoint)
+            // For now, let's assume /data or a new call gives us the profile
+            document.getElementById('prof-spada-user').value = data.profile?.spada_username || '';
+            document.getElementById('prof-discord-hook').value = data.profile?.discord_webhook || '';
+
+            document.getElementById('ai-model-select').value = aiConfig.ai_model || 'gemini-1.5-flash';
             renderAICourseScope(allCourseData);
+            renderSettingsList(allCourseData);
         } catch (error) {
-            console.error('Error loading AI config:', error);
+            console.error('Error loading configuration:', error);
         }
     }
 
@@ -325,19 +413,8 @@ document.addEventListener('DOMContentLoaded', async () => {
         if (apiKey) aiConfig.gemini_api_key = apiKey;
         aiConfig.ai_model = model;
 
-        try {
-            const response = await fetch('/ai-config', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(aiConfig)
-            });
-            if (response.ok) {
-                alert('AI Configuration Saved!');
-                document.getElementById('ai-api-key').value = '';
-            }
-        } catch (error) {
-            console.error('Error saving AI config:', error);
-        }
+        saveSettings(); // Reuse the same save logic
+        document.getElementById('ai-api-key').value = '';
     }
 
     function renderAICourseScope(courses) {
@@ -345,27 +422,22 @@ document.addEventListener('DOMContentLoaded', async () => {
         if (!scopeContainer) return;
 
         scopeContainer.innerHTML = courses.map(course => {
-            const courseSettings = aiConfig.auto_courses[course.course_title] || { attendance: false, quiz: false };
+            const courseSettings = aiConfig.auto_courses[course.course_title] || { enabled: true, attendance: false, quiz: false };
             return `<div class="filter-item" style="flex-direction: column; align-items: flex-start; border-bottom: 1px dotted #ccc; padding: 10px 0;">
                     <div style="font-weight: bold; font-size: 10px; margin-bottom: 5px;">${course.course_title}</div>
                     <div style="display: flex; gap: 15px; padding-left: 10px;">
                         <label style="font-size: 9px; display: flex; align-items: center; gap: 4px;">
-                            <input type="checkbox" ${courseSettings.attendance ? 'checked' : ''} onchange="window.updateCourseAI('${course.course_title}', 'attendance', this.checked)"> 
+                            <input type="checkbox" ${courseSettings.attendance ? 'checked' : ''} onchange="window.updateDeepConfig('${course.course_title}', 'attendance', this.checked)">
                             Auto-Attendance
                         </label>
                         <label style="font-size: 9px; display: flex; align-items: center; gap: 4px;">
-                            <input type="checkbox" ${courseSettings.quiz ? 'checked' : ''} onchange="window.updateCourseAI('${course.course_title}', 'quiz', this.checked)"> 
+                            <input type="checkbox" ${courseSettings.quiz ? 'checked' : ''} onchange="window.updateDeepConfig('${course.course_title}', 'quiz', this.checked)">
                             Auto-Quiz
                         </label>
                     </div>
                 </div>`;
         }).join('');
     }
-
-    window.updateCourseAI = (courseTitle, type, enabled) => {
-        if (!aiConfig.auto_courses[courseTitle]) aiConfig.auto_courses[courseTitle] = { attendance: false, quiz: false };
-        aiConfig.auto_courses[courseTitle][type] = enabled;
-    };
 
     document.getElementById('save-ai-config')?.addEventListener('click', saveAIConfig);
 

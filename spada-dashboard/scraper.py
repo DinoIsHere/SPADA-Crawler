@@ -27,13 +27,16 @@ def load_data(filename=DATA_FILE):
     print(f"No existing data found at {filename}")
     return []
 
-def login(page):
+def login(page, username=None, password=None):
     """
     Logs in to the website.
     """
     print("Logging in...")
-    username = os.getenv("SPADA_USERNAME")
-    password = os.getenv("SPADA_PASSWORD")
+    if not username:
+        username = os.getenv("SPADA_USERNAME")
+    if not password:
+        password = os.getenv("SPADA_PASSWORD")
+    
     page.goto("https://spada.teknokrat.ac.id/login/index.php")
     page.fill("input#username", username)
     page.fill("input#password", password)
@@ -311,69 +314,109 @@ def find_new_items(old_data, new_data):
 
 def main():
     """
-    Main function to run the scraper.
+    Main function to run the multi-user scraper.
     """
-    dotenv_path = os.path.join(os.path.dirname(__file__), 'login.env')
-    load_dotenv(dotenv_path=dotenv_path)
+    import db_utils
     
+    # Fetch all profiles that have SPADA credentials
+    profiles = db_utils.supabase.table("profiles").select("*").not_.is_("spada_username", "null").execute().data
+    
+    if not profiles:
+        print("No user profiles with SPADA credentials found.")
+        return
+
     with Stealth().use_sync(sync_playwright()) as p:
         browser = p.chromium.launch(headless=True)
-        context = browser.new_context()
-        page = context.new_page()
-
-        login(page)
-
-        # Navigate to the courses page
-        print("Navigating to courses page...")
-        page.goto("https://spada.teknokrat.ac.id/my/courses.php")
-        page.wait_for_load_state("networkidle")
-        print("Courses page loaded.")
-
-        course_list = get_courses(page)
         
-        all_course_data = []
-        for course in course_list:
-            data = scrape_course_data(page, course["title"], course["url"])
-            all_course_data.append({"course_title": course["title"], **data})
-        
-        # Load previous data
-        old_course_data = load_data()
+        for profile in profiles:
+            user_id = profile["id"]
+            username = profile["username"]
+            spada_user = profile["spada_username"]
+            spada_pass = db_utils.decrypt_password(profile["spada_password"])
+            discord_webhook = profile.get("discord_webhook") or os.getenv("DISCORD_WEBHOOK_URL")
+            config = profile.get("ai_config", {"auto_courses": {}})
+            old_data = profile.get("scraped_data", [])
+            old_data_map = {c['course_title']: c for c in old_data}
 
-        # Find new items
-        new_assignments, new_attendance, new_quizzes = find_new_items(old_course_data, all_course_data)
+            print(f"--- Running Scraper for User: {username} ---")
+            
+            context = browser.new_context()
+            page = context.new_page()
+            try:
+                login(page, spada_user, spada_pass)
+                page.goto("https://spada.teknokrat.ac.id/my/courses.php")
+                page.wait_for_load_state("networkidle")
+                
+                course_list = get_courses(page)
+                all_course_data = []
+                automation_results = []
+                task_status = profile.get("task_status", {})
+                gemini_key = profile.get("gemini_api_key") or os.getenv("GEMINI_API_KEY")
 
-        # Send Discord notifications for new items
-        discord_webhook_url = os.getenv("DISCORD_WEBHOOK_URL")
-        print(f"Discord webhook URL being used: {discord_webhook_url}")
-        notification_message = ""
+                for course in course_list:
+                    course_title = course["title"]
+                    # Default settings
+                    course_cfg = config.get("auto_courses", {}).get(course_title, {"enabled": True, "attendance": False, "quiz": False})
+                    
+                    if course_cfg.get("enabled", True):
+                        data = scrape_course_data(page, course_title, course["url"])
+                        all_course_data.append({"course_title": course_title, **data})
 
-        if new_assignments:
-            notification_message += "**New Assignments:**\n"
-            for assign in new_assignments:
-                notification_message += f"- [{assign['text']}]({assign['url']})\n"
-        
-        if new_attendance:
-            if notification_message:
-                notification_message += "\n"
-            notification_message += "**New Attendance Records:**\n"
-            for attend in new_attendance:
-                notification_message += f"- [{attend['text']}]({attend['url']})\n"
+                        # --- AUTO AUTOMATION LOGIC ---
+                        # Auto Attendance
+                        if course_cfg.get("attendance"):
+                            for attend in data.get("attendance", []):
+                                if not task_status.get(attend["url"]):
+                                    success = auto_attendance(page, attend["url"])
+                                    if success:
+                                        automation_results.append(f"✅ Auto-Attendance: {course_title} - {attend['text']}")
+                                        task_status[attend["url"]] = True
 
-        if new_quizzes:
-            if notification_message:
-                notification_message += "\n"
-            notification_message += "**New Quizzes:**\n"
-            for quiz in new_quizzes:
-                notification_message += f"- [{quiz['text']}]({quiz['url']})\n"
+                        # Auto Quiz
+                        if course_cfg.get("quiz"):
+                            for quiz in data.get("quizzes", []):
+                                if not task_status.get(quiz["url"]):
+                                    success = auto_solve_quiz(page, quiz["url"], gemini_key, config.get("ai_model", "gemini-1.5-flash"))
+                                    if success:
+                                        automation_results.append(f"🤖 AI Quiz Solved: {course_title} - {quiz['text']}")
+                                        task_status[quiz["url"]] = True
+                    else:
+                        if course_title in old_data_map:
+                            all_course_data.append(old_data_map[course_title])
 
-        if notification_message:
-            send_discord_notification(discord_webhook_url, notification_message)
-        else:
-            print("No new assignments, attendance records, or quizzes found.")
+                # Find new items
+                new_assignments, new_attendance, new_quizzes = find_new_items(old_data, all_course_data)
 
-        # Save the new data
-        save_data(all_course_data)
-        
+
+                # Notifications
+                notification_parts = []
+                if automation_results:
+                    notification_parts.append("🚀 **Automation Actions Taken:**\n" + "\n".join(automation_results))
+                
+                if new_assignments: 
+                    notification_parts.append("**New Assignments:**\n" + "\n".join([f"- [{a['text']}]({a['url']})" for a in new_assignments]))
+                
+                if new_attendance: 
+                    notification_parts.append("**New Attendance:**\n" + "\n".join([f"- [{a['text']}]({a['url']})" for a in new_attendance]))
+                
+                if new_quizzes: 
+                    notification_parts.append("**New Quizzes:**\n" + "\n".join([f"- [{a['text']}]({a['url']})" for a in new_quizzes]))
+
+                if notification_parts:
+                    full_message = f"🔔 **Updates for {username}**\n\n" + "\n\n".join(notification_parts)
+                    send_discord_notification(discord_webhook, full_message)
+
+                # Save back to Supabase
+                db_utils.update_user_profile(user_id, {
+                    "scraped_data": all_course_data,
+                    "task_status": task_status
+                })
+                
+            except Exception as e:
+                print(f"Error for user {username}: {e}")
+            finally:
+                page.close()
+
         browser.close()
 
 

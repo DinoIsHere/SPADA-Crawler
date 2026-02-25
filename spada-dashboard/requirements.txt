@@ -3,5 +3,9 @@ playwright-stealth
 python-dotenv
 requests
 fastapi
+jinja2
 uvicorn[standard]
 google-generativeai
+supabase
+cryptography
+python-multipart

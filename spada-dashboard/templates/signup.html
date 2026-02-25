@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - SPADA Tracker</title>
+    <link rel="stylesheet" href="https://unpkg.com/98.css">
+    <link rel="stylesheet" href="/static/style.css">
+    <style>
+        body {
+            background-color: #008080;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .window {
+            width: 300px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="window">
+        <div class="title-bar">
+            <div class="title-bar-text">Sign Up - SPADA Tracker</div>
+            <div class="title-bar-controls">
+                <button aria-label="Minimize"></button>
+                <button aria-label="Maximize"></button>
+                <button aria-label="Close"></button>
+            </div>
+        </div>
+        <div class="window-content">
+            <form action="/signup" method="post">
+                <div class="field-row-stacked" style="margin-bottom: 10px;">
+                    <label for="username">Username</label>
+                    <input id="username" type="text" name="username" required />
+                </div>
+                <div class="field-row-stacked" style="margin-bottom: 10px;">
+                    <label for="email">Email</label>
+                    <input id="email" type="email" name="email" required />
+                </div>
+                <div class="field-row-stacked" style="margin-bottom: 20px;">
+                    <label for="password">Password</label>
+                    <input id="password" type="password" name="password" required />
+                </div>
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <p style="margin: 0; font-size: 11px;">Have an account? <a href="/login">Login</a></p>
+                    <button type="submit">Create Account</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -28,9 +28,12 @@
             <div class="menu-item"><u>F</u>ile</div>
             <div class="menu-item"><u>E</u>dit</div>
             <div class="menu-item"><u>V</u>iew</div>
-            <div class="menu-item"><u>G</u>o</div>
-            <div class="menu-item"><u>F</u>avorites</div>
             <div class="menu-item"><u>H</u>elp</div>
+            <div style="margin-left: auto; display: flex; align-items: center; padding-right: 5px; gap: 10px;">
+                <span style="font-size: 11px;">User: <strong>{{ username }}</strong></span>
+                <a href="/logout" class="win-btn"
+                    style="text-decoration: none; padding: 2px 5px; font-size: 10px;">Logout</a>
+            </div>
         </div>
 
         <div class="toolbar">
@@ -159,79 +162,119 @@
                 </div>
             </section>
 
-            <!-- Settings Section -->
             <section id="settings-section" class="content-section">
                 <div class="settings-tabs">
-                    <div class="tab active">Course Configuration</div>
-                    <div class="tab-content win-inset">
-                        <p style="margin-bottom: 10px;">Select which courses to include in the scrape sequence:</p>
-                        <div class="course-filter-list" id="settings-course-list">
-                            <div class="loading-state">Loading Registry...</div>
+                    <div class="tab active" onclick="window.switchTab('course-config')">Course Configuration</div>
+                    <div class="tab" onclick="window.switchTab('my-profile')">My Profile</div>
+
+                    <div id="tab-course-config" class="tab-content win-inset">
+                        <p style="margin-bottom: 10px;">Toggle scraping and automation for each course registry:</p>
+                        <div class="course-registry-container">
+                            <table class="win-table" style="width: 100%; border-collapse: collapse;">
+                                <thead>
+                                    <tr style="background: var(--win-gray); font-size: 10px;">
+                                        <th style="text-align: left; padding: 5px; border: 1px solid var(--win-dark);">
+                                            Course Title</th>
+                                        <th style="width: 50px; border: 1px solid var(--win-dark);">Scrape</th>
+                                        <th style="width: 50px; border: 1px solid var(--win-dark);">Auto</th>
+                                        <th style="width: 50px; border: 1px solid var(--win-dark);">AI</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="settings-course-list">
+                                    <tr>
+                                        <td colspan="4" style="text-align: center; padding: 20px;">Loading registry...
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
                         <div style="margin-top: 15px; display: flex; gap: 10px;">
-                            <button class="win-btn">Save Registry</button>
-                            <button class="win-btn">Reset Defaults</button>
+                            <button class="win-btn" id="save-settings-btn">Save Configuration</button>
+                            <button class="win-btn" id="reset-settings-btn">Reset Defaults</button>
                         </div>
+                    </div>
+
+                    <div id="tab-my-profile" class="tab-content win-inset" style="display: none;">
+                        <fieldset>
+                            <legend>SPADA Credentials</legend>
+                            <div class="field-row-stacked">
+                                <label>SPADA Username:</label>
+                                <input type="text" id="prof-spada-user" class="win-input">
+                            </div>
+                            <div class="field-row-stacked">
+                                <label>SPADA Password (Hidden):</label>
+                                <input type="password" id="prof-spada-pass" class="win-input"
+                                    placeholder="Enter to update">
+                            </div>
+                        </fieldset>
+                        <fieldset style="margin-top: 10px;">
+                            <legend>Integrations</legend>
+                            <div class="field-row-stacked">
+                                <label>Discord Webhook URL:</label>
+                                <input type="text" id="prof-discord-hook" class="win-input">
+                            </div>
+                            <div class="field-row-stacked">
+                                <label>Gemini API Key:</label>
+                                <input type="password" id="prof-gemini-key" class="win-input"
+                                    placeholder="Personal AI Key">
+                            </div>
+                        </fieldset>
+                        <button class="win-btn" id="save-profile-btn" style="margin-top: 15px; width: 100%;">Update My
+                            Profile Details</button>
                     </div>
                 </div>
             </section>
-        </div>
 
-        <div class="status-bar">
-            <div class="status-cell">Ready</div>
-            <div class="status-cell">Local Intranet</div>
-            <div class="status-cell">12 Courses Loaded</div>
-        </div>
-    </div>
-
-    <!-- Atom Toy Window -->
-    <div class="window toy-window" id="atom-toy">
-        <div class="title-bar">
-            <div class="title-bar-text">
-                <img src="https://win98icons.alexmeub.com/icons/png/accessibility_two_windows.png" class="title-icon">
-                Atom.exe
-            </div>
-            <div class="title-bar-controls">
-                <button aria-label="Close" onclick="document.getElementById('atom-toy').style.display='none'"></button>
-            </div>
-        </div>
-        <div class="window-content toy-content">
-            <div class="atom">
-                <div class="nucleus"></div>
-                <div class="orbit orbit-1">
-                    <div class="electron"></div>
+            <!-- Atom Toy Window -->
+            <div class="window toy-window" id="atom-toy">
+                <div class="title-bar">
+                    <div class="title-bar-text">
+                        <img src="https://win98icons.alexmeub.com/icons/png/accessibility_two_windows.png"
+                            class="title-icon">
+                        Atom.exe
+                    </div>
+                    <div class="title-bar-controls">
+                        <button aria-label="Close"
+                            onclick="document.getElementById('atom-toy').style.display='none'"></button>
+                    </div>
                 </div>
-                <div class="orbit orbit-2">
-                    <div class="electron"></div>
-                </div>
-                <div class="orbit orbit-3">
-                    <div class="electron"></div>
+                <div class="window-content toy-content">
+                    <div class="atom">
+                        <div class="nucleus"></div>
+                        <div class="orbit orbit-1">
+                            <div class="electron"></div>
+                        </div>
+                        <div class="orbit orbit-2">
+                            <div class="electron"></div>
+                        </div>
+                        <div class="orbit orbit-3">
+                            <div class="electron"></div>
+                        </div>
+                    </div>
+                    <p class="toy-hint">Click to boost energy!</p>
                 </div>
             </div>
-            <p class="toy-hint">Click to boost energy!</p>
-        </div>
-    </div>
 
-    <!-- Taskbar -->
-    <div class="taskbar">
-        <button class="start-btn">
-            <img src="https://win98icons.alexmeub.com/icons/png/windows-0.png">
-            Start
-        </button>
-        <div class="task-sep"></div>
-        <div class="task-items">
-            <div class="task-btn active">
-                <img src="https://win98icons.alexmeub.com/icons/png/computer_explorer-5.png">
-                SPADA Tracker
+            <!-- Taskbar -->
+            <div class="taskbar">
+                <button class="start-btn">
+                    <img src="https://win98icons.alexmeub.com/icons/png/windows-0.png">
+                    Start
+                </button>
+                <div class="task-sep"></div>
+                <div class="task-items">
+                    <div class="task-btn active">
+                        <img src="https://win98icons.alexmeub.com/icons/png/computer_explorer-5.png">
+                        SPADA Tracker
+                    </div>
+                </div>
+                <div class="tray">
+                    <img src="https://win98icons.alexmeub.com/icons/png/loudspeaker_rays-0.png">
+                    <div id="tray-clock">12:00 PM</div>
+                </div>
             </div>
-        </div>
-        <div class="tray">
-            <img src="https://win98icons.alexmeub.com/icons/png/loudspeaker_rays-0.png">
-            <div id="tray-clock">12:00 PM</div>
-        </div>
-    </div>
 
-    <script src="/static/script.js"></script>
+            <script src="/static/script.js"></script>
 </body>
 
 </html>
