@@ -1,0 +1,546 @@
+[
+    {
+        "course_title": "Algoritma Pemrograman - IF 24 B (IF 24 C)",
+        "assignments": [
+            {
+                "text": "KUIS 1 - IF 24 B",
+                "url": "https://spada.teknokrat.ac.id/mod/assign/view.php?id=75003",
+                "due_date": null
+            },
+            {
+                "text": "KUIS 1 - IF 24 C",
+                "url": "https://spada.teknokrat.ac.id/mod/assign/view.php?id=75011",
+                "due_date": "Thursday, 17 April 2025, 9:13 PM"
+            }
+        ],
+        "attendance": [],
+        "quizzes": []
+    },
+    {
+        "course_title": "Analisis dan Strategi Algoritma - IF 24 A (IF ...",
+        "assignments": [
+            {
+                "text": "3rd Meeting - Social Media Content Assignment",
+                "url": "https://spada.teknokrat.ac.id/mod/assign/view.php?id=89632",
+                "due_date": "Monday, 2 February 2026, 12:49 AM"
+            },
+            {
+                "text": "5th Meeting - YouTube Assignment",
+                "url": "https://spada.teknokrat.ac.id/mod/assign/view.php?id=98435",
+                "due_date": "Sunday, 1 February 2026, 11:45 PM"
+            },
+            {
+                "text": "8th Meeting - IG Content Assignment",
+                "url": "https://spada.teknokrat.ac.id/mod/assign/view.php?id=100665",
+                "due_date": "Monday, 2 February 2026, 7:56 AM"
+            },
+            {
+                "text": "10th Meeting - YouTube Assignment",
+                "url": "https://spada.teknokrat.ac.id/mod/assign/view.php?id=101421",
+                "due_date": "Monday, 2 February 2026, 12:50 AM"
+            },
+            {
+                "text": "11th Meeting - Journal Assignment",
+                "url": "https://spada.teknokrat.ac.id/mod/assign/view.php?id=89657",
+                "due_date": "Monday, 19 January 2026, 11:32 AM"
+            },
+            {
+                "text": "13th Meeting - IG Content Assignment",
+                "url": "https://spada.teknokrat.ac.id/mod/assign/view.php?id=89653",
+                "due_date": "Monday, 2 February 2026, 7:45 AM"
+            },
+            {
+                "text": "15th Meeting - YouTube Assignment",
+                "url": "https://spada.teknokrat.ac.id/mod/assign/view.php?id=104553",
+                "due_date": "Monday, 2 February 2026, 12:48 AM"
+            },
+            {
+                "text": "16th Meeting - Final Project Submissions",
+                "url": "https://spada.teknokrat.ac.id/mod/assign/view.php?id=89693",
+                "due_date": "Monday, 19 January 2026, 10:12 AM"
+            }
+        ],
+        "attendance": [],
+        "quizzes": [
+            {
+                "text": "2nd Meeting - Posttest (IF 24 A)",
+                "url": "https://spada.teknokrat.ac.id/mod/quiz/view.php?id=94881"
+            },
+            {
+                "text": "2nd Meeting - Posttest (IF 24 B)",
+                "url": "https://spada.teknokrat.ac.id/mod/quiz/view.php?id=94889"
+            },
+            {
+                "text": "2nd Meeting - Posttest (IF 24 C)",
+                "url": "https://spada.teknokrat.ac.id/mod/quiz/view.php?id=94888"
+            },
+            {
+                "text": "3rd Meeting - Posttest (IF 24 A)",
+                "url": "https://spada.teknokrat.ac.id/mod/quiz/view.php?id=89631"
+            },
+            {
+                "text": "3rd Meeting - Posttest (IF 24 B)",
+                "url": "https://spada.teknokrat.ac.id/mod/quiz/view.php?id=96005"
+            },
+            {
+                "text": "3rd Meeting - Posttest (IF 24 C)",
+                "url": "https://spada.teknokrat.ac.id/mod/quiz/view.php?id=96006"
+            },
+            {
+                "text": "4th Meeting - Posttest (IF 24 A)",
+                "url": "https://spada.teknokrat.ac.id/mod/quiz/view.php?id=97441"
+            },
+            {
+                "text": "4th Meeting - Posttest (IF 24 B)",
+                "url": "https://spada.teknokrat.ac.id/mod/quiz/view.php?id=97596"
+            },
+            {
+                "text": "4th Meeting - Posttest (IF 24 C)",
+                "url": "https://spada.teknokrat.ac.id/mod/quiz/view.php?id=97597"
+            },
+            {
+                "text": "5th Meeting - Posttest (IF 24 C)",
+                "url": "https://spada.teknokrat.ac.id/mod/quiz/view.php?id=98433"
+            },
+            {
+                "text": "6th Meeting - Quiz (IF 24 C)",
+                "url": "https://spada.teknokrat.ac.id/mod/quiz/view.php?id=98437"
+            },
+            {
+                "text": "7th Meeting - Posttest (IF 24 C)",
+                "url": "https://spada.teknokrat.ac.id/mod/quiz/view.php?id=98911"
+            },
+            {
+                "text": "9th Meeting - Posttest (IF 24 C)",
+                "url": "https://spada.teknokrat.ac.id/mod/quiz/view.php?id=101418"
+            },
+            {
+                "text": "10th Meeting - Posttest (IF 24 C)",
+                "url": "https://spada.teknokrat.ac.id/mod/quiz/view.php?id=101847"
+            },
+            {
+                "text": "11th Meeting - Mid Test (IF 24 C)",
+                "url": "https://spada.teknokrat.ac.id/mod/quiz/view.php?id=101849"
+            },
+            {
+                "text": "12th Meeting - Posttest (IF 24 C)",
+                "url": "https://spada.teknokrat.ac.id/mod/quiz/view.php?id=104514"
+            },
+            {
+                "text": "13h Meeting - Posttest (IF 24 C)",
+                "url": "https://spada.teknokrat.ac.id/mod/quiz/view.php?id=104540"
+            },
+            {
+                "text": "14th Meeting - Posttest (IF 24 C)",
+                "url": "https://spada.teknokrat.ac.id/mod/quiz/view.php?id=104789"
+            },
+            {
+                "text": "15th Meeting - Posttest (IF 24 C)",
+                "url": "https://spada.teknokrat.ac.id/mod/quiz/view.php?id=104812"
+            },
+            {
+                "text": "16th Meeting - Final Test (IF 24 C)",
+                "url": "https://spada.teknokrat.ac.id/mod/quiz/view.php?id=105161"
+            }
+        ]
+    },
+    {
+        "course_title": "Angga Bayu Santoso, S.Kom., M.Kom.",
+        "assignments": [],
+        "attendance": [
+            {
+                "text": "Form Kehadrian Pembimbingan Awal Semester - 12 Maret 2025",
+                "url": "https://spada.teknokrat.ac.id/mod/attendance/view.php?id=72140"
+            },
+            {
+                "text": "Form Kehadrian Pembimbingan Tengah Semester - 16 April 2025",
+                "url": "https://spada.teknokrat.ac.id/mod/attendance/view.php?id=75677"
+            },
+            {
+                "text": "Form Kehadrian Pembimbingan Awal Semester - 7 Oktober 2025",
+                "url": "https://spada.teknokrat.ac.id/mod/attendance/view.php?id=94868"
+            }
+        ],
+        "quizzes": [
+            {
+                "text": "Form Pembimbingan Awal Semester - 12 Maret 2025",
+                "url": "https://spada.teknokrat.ac.id/mod/quiz/view.php?id=68832"
+            },
+            {
+                "text": "Form Pembimbingan Akhir Semester",
+                "url": "https://spada.teknokrat.ac.id/mod/quiz/view.php?id=68834"
+            },
+            {
+                "text": "Form Pembimbingan Awal Semester - 7 Oktober 2025",
+                "url": "https://spada.teknokrat.ac.id/mod/quiz/view.php?id=94870"
+            },
+            {
+                "text": "Form Bimbingan Pertemuan 1",
+                "url": "https://spada.teknokrat.ac.id/mod/quiz/view.php?id=68835"
+            },
+            {
+                "text": "Form Bimbingan Pertemuan 2",
+                "url": "https://spada.teknokrat.ac.id/mod/quiz/view.php?id=68836"
+            },
+            {
+                "text": "Form Bimbingan Pertemuan 3",
+                "url": "https://spada.teknokrat.ac.id/mod/quiz/view.php?id=68837"
+            },
+            {
+                "text": "Form Bimbingan Pertemuan 4",
+                "url": "https://spada.teknokrat.ac.id/mod/quiz/view.php?id=68838"
+            },
+            {
+                "text": "Form Bimbingan Pertemuan 5",
+                "url": "https://spada.teknokrat.ac.id/mod/quiz/view.php?id=68839"
+            },
+            {
+                "text": "Form Bimbingan Pertemuan 6",
+                "url": "https://spada.teknokrat.ac.id/mod/quiz/view.php?id=68840"
+            }
+        ]
+    },
+    {
+        "course_title": "Desain Grafis - IF 24 C",
+        "assignments": [],
+        "attendance": [],
+        "quizzes": []
+    },
+    {
+        "course_title": "Desain Web - IF 24 A",
+        "assignments": [],
+        "attendance": [],
+        "quizzes": [
+            {
+                "text": "1. Soal UAS Tipe A (NPM GENAP)",
+                "url": "https://spada.teknokrat.ac.id/mod/quiz/view.php?id=104910"
+            },
+            {
+                "text": "2. SOAL UAS TIPE B (NPM GANJIL)",
+                "url": "https://spada.teknokrat.ac.id/mod/quiz/view.php?id=104914"
+            }
+        ]
+    },
+    {
+        "course_title": "Jaringan Komputer dan Komunikasi Data (ONLINE) ...",
+        "assignments": [
+            {
+                "text": "IF 24 ABC: Midterm Exam (22 Nov 2025)",
+                "url": "https://spada.teknokrat.ac.id/mod/assign/view.php?id=100361",
+                "due_date": null
+            },
+            {
+                "text": "IF 24 DFx: Midterm Exam (22 Nov 2025)",
+                "url": "https://spada.teknokrat.ac.id/mod/assign/view.php?id=100362",
+                "due_date": null
+            },
+            {
+                "text": "IF 24 ABC: Assignment to Wireless & Mobile Networks",
+                "url": "https://spada.teknokrat.ac.id/mod/assign/view.php?id=101336",
+                "due_date": null
+            },
+            {
+                "text": "IF 24 DFx: Assignment to Wireless & Mobile Networks",
+                "url": "https://spada.teknokrat.ac.id/mod/assign/view.php?id=101337",
+                "due_date": null
+            },
+            {
+                "text": "TUGAS",
+                "url": "https://spada.teknokrat.ac.id/mod/assign/view.php?id=105213",
+                "due_date": null
+            },
+            {
+                "text": "KUIS",
+                "url": "https://spada.teknokrat.ac.id/mod/assign/view.php?id=105216",
+                "due_date": null
+            },
+            {
+                "text": "UTS",
+                "url": "https://spada.teknokrat.ac.id/mod/assign/view.php?id=105215",
+                "due_date": null
+            }
+        ],
+        "attendance": [
+            {
+                "text": "Attendance to Introduction to Computer Networks & Current Trends",
+                "url": "https://spada.teknokrat.ac.id/mod/attendance/view.php?id=92825"
+            },
+            {
+                "text": "Attendance to Routing & Switching",
+                "url": "https://spada.teknokrat.ac.id/mod/attendance/view.php?id=99510"
+            },
+            {
+                "text": "IF 24 B: Attendance (8 Dec 2025)",
+                "url": "https://spada.teknokrat.ac.id/mod/attendance/view.php?id=102183"
+            },
+            {
+                "text": "IF 24 C: Attendance (8 Dec 2025)",
+                "url": "https://spada.teknokrat.ac.id/mod/attendance/view.php?id=102184"
+            },
+            {
+                "text": "Attendance to Fundamentals of Network Security",
+                "url": "https://spada.teknokrat.ac.id/mod/attendance/view.php?id=104599"
+            },
+            {
+                "text": "Attendance to Advanced Trends in Networking",
+                "url": "https://spada.teknokrat.ac.id/mod/attendance/view.php?id=104600"
+            }
+        ],
+        "quizzes": []
+    },
+    {
+        "course_title": "Pemrograman Berorientasi Objek Paktikum - IF 24 ...",
+        "assignments": [],
+        "attendance": [],
+        "quizzes": []
+    },
+    {
+        "course_title": "Pemrograman Berorientasi Objek TEORI (ONLINE) - ...",
+        "assignments": [
+            {
+                "text": "Pengumpulan Final Project IF 24 B",
+                "url": "https://spada.teknokrat.ac.id/mod/assign/view.php?id=104982",
+                "due_date": null
+            },
+            {
+                "text": "Pengumpulan Final Project IF 24 Fx",
+                "url": "https://spada.teknokrat.ac.id/mod/assign/view.php?id=104986",
+                "due_date": null
+            }
+        ],
+        "attendance": [],
+        "quizzes": [
+            {
+                "text": "Quiz IF 24 B \u2013 Introduction to OOP",
+                "url": "https://spada.teknokrat.ac.id/mod/quiz/view.php?id=88963"
+            },
+            {
+                "text": "Quiz IF 24 C \u2013 Introduction to OOP",
+                "url": "https://spada.teknokrat.ac.id/mod/quiz/view.php?id=88965"
+            },
+            {
+                "text": "Quiz IF 24 Fx \u2013 Introduction to OOP",
+                "url": "https://spada.teknokrat.ac.id/mod/quiz/view.php?id=88964"
+            },
+            {
+                "text": "Quiz IF 24 B \u2013 Class and Object",
+                "url": "https://spada.teknokrat.ac.id/mod/quiz/view.php?id=93672"
+            },
+            {
+                "text": "Quiz IF 24 Fx \u2013 Class and Object",
+                "url": "https://spada.teknokrat.ac.id/mod/quiz/view.php?id=93673"
+            },
+            {
+                "text": "Quiz IF 24 B \u2013 Encapsulation",
+                "url": "https://spada.teknokrat.ac.id/mod/quiz/view.php?id=96637"
+            },
+            {
+                "text": "Quiz IF 24 Fx \u2013 Encapsulation",
+                "url": "https://spada.teknokrat.ac.id/mod/quiz/view.php?id=95873"
+            },
+            {
+                "text": "Quiz IF 24 B \u2013 Inheritance",
+                "url": "https://spada.teknokrat.ac.id/mod/quiz/view.php?id=96661"
+            },
+            {
+                "text": "Quiz IF 24 Fx \u2013 Inheritance",
+                "url": "https://spada.teknokrat.ac.id/mod/quiz/view.php?id=104988"
+            },
+            {
+                "text": "Quiz I - IF 24 B",
+                "url": "https://spada.teknokrat.ac.id/mod/quiz/view.php?id=105363"
+            },
+            {
+                "text": "Quiz I - IF 24 Fx",
+                "url": "https://spada.teknokrat.ac.id/mod/quiz/view.php?id=105364"
+            },
+            {
+                "text": "Quiz IF 24 B \u2013 Polymorphism",
+                "url": "https://spada.teknokrat.ac.id/mod/quiz/view.php?id=98906"
+            },
+            {
+                "text": "Quiz IF 24 Fx \u2013 Polymorphism",
+                "url": "https://spada.teknokrat.ac.id/mod/quiz/view.php?id=105350"
+            },
+            {
+                "text": "Quiz IF 24 B \u2013 Abstraction",
+                "url": "https://spada.teknokrat.ac.id/mod/quiz/view.php?id=100998"
+            },
+            {
+                "text": "Quiz IF 24 Fx \u2013 Abstraction",
+                "url": "https://spada.teknokrat.ac.id/mod/quiz/view.php?id=101017"
+            },
+            {
+                "text": "Mid-Semester Exam - IF 24 B",
+                "url": "https://spada.teknokrat.ac.id/mod/quiz/view.php?id=105348"
+            },
+            {
+                "text": "Mid-Semester Exam - IF 24 Fx",
+                "url": "https://spada.teknokrat.ac.id/mod/quiz/view.php?id=105349"
+            },
+            {
+                "text": "Quiz IF 24 B \u2013 Composition",
+                "url": "https://spada.teknokrat.ac.id/mod/quiz/view.php?id=101019"
+            },
+            {
+                "text": "Quiz IF 24 Fx \u2013 Composition",
+                "url": "https://spada.teknokrat.ac.id/mod/quiz/view.php?id=101018"
+            },
+            {
+                "text": "Quiz IF 24 B \u2013 Error Handling and Exceptions",
+                "url": "https://spada.teknokrat.ac.id/mod/quiz/view.php?id=105351"
+            },
+            {
+                "text": "Quiz IF 24 Fx \u2013 Error Handling and Exceptions",
+                "url": "https://spada.teknokrat.ac.id/mod/quiz/view.php?id=105352"
+            },
+            {
+                "text": "Quiz IF 24 B \u2013 Modular Programming",
+                "url": "https://spada.teknokrat.ac.id/mod/quiz/view.php?id=105353"
+            },
+            {
+                "text": "Quiz IF 24 Fx \u2013 Modular Programming",
+                "url": "https://spada.teknokrat.ac.id/mod/quiz/view.php?id=105354"
+            },
+            {
+                "text": "Quiz IF 24 B \u2013 Persistent Data",
+                "url": "https://spada.teknokrat.ac.id/mod/quiz/view.php?id=105362"
+            },
+            {
+                "text": "Quiz IF 24 Fx \u2013 Persistent Data",
+                "url": "https://spada.teknokrat.ac.id/mod/quiz/view.php?id=105357"
+            },
+            {
+                "text": "Quiz II - IF 24 B",
+                "url": "https://spada.teknokrat.ac.id/mod/quiz/view.php?id=105356"
+            },
+            {
+                "text": "Quiz II - IF 24 Fx",
+                "url": "https://spada.teknokrat.ac.id/mod/quiz/view.php?id=105361"
+            },
+            {
+                "text": "Quiz IF 24 B \u2013 Git & GitHub",
+                "url": "https://spada.teknokrat.ac.id/mod/quiz/view.php?id=105358"
+            },
+            {
+                "text": "Quiz IF 24 Fx \u2013 Git & GitHub",
+                "url": "https://spada.teknokrat.ac.id/mod/quiz/view.php?id=105359"
+            },
+            {
+                "text": "UAS IF 24 Fx (TIPE A)",
+                "url": "https://spada.teknokrat.ac.id/mod/quiz/view.php?id=104953"
+            },
+            {
+                "text": "UAS IF 24 Fx (TIPE B)",
+                "url": "https://spada.teknokrat.ac.id/mod/quiz/view.php?id=104959"
+            },
+            {
+                "text": "UAS IF 24 B (TIPE A)",
+                "url": "https://spada.teknokrat.ac.id/mod/quiz/view.php?id=105083"
+            },
+            {
+                "text": "UAS IF 24 B (TIPE B)",
+                "url": "https://spada.teknokrat.ac.id/mod/quiz/view.php?id=105084"
+            }
+        ]
+    },
+    {
+        "course_title": "Praktikum Jaringan Komputer dan Komunikasi Data ...",
+        "assignments": [
+            {
+                "text": "IF 24 B: Resume Video Network Devices & Transmission Media",
+                "url": "https://spada.teknokrat.ac.id/mod/assign/view.php?id=98736",
+                "due_date": "Monday, 3 November 2025, 10:31 PM"
+            },
+            {
+                "text": "IF 24 C: Resume Video Network Devices & Transmission Media",
+                "url": "https://spada.teknokrat.ac.id/mod/assign/view.php?id=98756",
+                "due_date": null
+            },
+            {
+                "text": "IF 24 B: Reels Video: Cabling",
+                "url": "https://spada.teknokrat.ac.id/mod/assign/view.php?id=98737",
+                "due_date": null
+            },
+            {
+                "text": "IF 24 C: Reels Video: Cabling",
+                "url": "https://spada.teknokrat.ac.id/mod/assign/view.php?id=98757",
+                "due_date": null
+            },
+            {
+                "text": "IF 24 B: Pengumpulan Link Video Presentasi: Final Project",
+                "url": "https://spada.teknokrat.ac.id/mod/assign/view.php?id=104174",
+                "due_date": "Sunday, 4 January 2026, 11:06 PM"
+            },
+            {
+                "text": "IF 24 C: Pengumpulan Link Video Presentasi: Final Project",
+                "url": "https://spada.teknokrat.ac.id/mod/assign/view.php?id=104175",
+                "due_date": null
+            },
+            {
+                "text": "IF 24 B: Pengumpulan File Presentasi",
+                "url": "https://spada.teknokrat.ac.id/mod/assign/view.php?id=104176",
+                "due_date": "Sunday, 4 January 2026, 11:06 PM"
+            },
+            {
+                "text": "IF 24 C: Pengumpulan File Presentasi",
+                "url": "https://spada.teknokrat.ac.id/mod/assign/view.php?id=104177",
+                "due_date": null
+            },
+            {
+                "text": "IF24B: FINAL EXAM",
+                "url": "https://spada.teknokrat.ac.id/mod/assign/view.php?id=101734",
+                "due_date": "Monday, 12 January 2026, 11:46 AM"
+            },
+            {
+                "text": "IF24C: FINAL EXAM",
+                "url": "https://spada.teknokrat.ac.id/mod/assign/view.php?id=101735",
+                "due_date": null
+            }
+        ],
+        "attendance": [
+            {
+                "text": "Attendance (15 Dec 2025)",
+                "url": "https://spada.teknokrat.ac.id/mod/attendance/view.php?id=102826"
+            },
+            {
+                "text": "IF 24 B: Attendance (29 Dec 2025)",
+                "url": "https://spada.teknokrat.ac.id/mod/attendance/view.php?id=104172"
+            },
+            {
+                "text": "IF 24 C: Attendance (29 Dec 2025)",
+                "url": "https://spada.teknokrat.ac.id/mod/attendance/view.php?id=104173"
+            }
+        ],
+        "quizzes": []
+    },
+    {
+        "course_title": "Praktikum Sistem Operasi - IF 24 A (IF 24 B)",
+        "assignments": [],
+        "attendance": [],
+        "quizzes": []
+    },
+    {
+        "course_title": "Praktikum Struktur Data - IF 24 A (IF 24 B, IF ...",
+        "assignments": [],
+        "attendance": [],
+        "quizzes": []
+    },
+    {
+        "course_title": "Rekayasa Perangkat Lunak - IF 24 C",
+        "assignments": [
+            {
+                "text": "Upload Answer UTS HERE NOW",
+                "url": "https://spada.teknokrat.ac.id/mod/assign/view.php?id=102623",
+                "due_date": "Tuesday, 16 December 2025, 11:31 PM"
+            },
+            {
+                "text": "UPLOAD Persentasi here now",
+                "url": "https://spada.teknokrat.ac.id/mod/assign/view.php?id=104153",
+                "due_date": null
+            }
+        ],
+        "attendance": [],
+        "quizzes": []
+    }
+]
