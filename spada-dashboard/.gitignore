@@ -1,11 +1,17 @@
-# Environment variables
+# Credentials and Secrets
 .env
+*.env
 login.env
-ai_config.json
+secrets.json
 
-# Data files
-course_data.json
-task_status.json
+# User Data (Prevents leaking personal course info)
+*.json
+!package.json
+!composer.json
+
+# Local Databases
+*.db
+*.sqlite
 
 # Python
 __pycache__/
@@ -15,3 +21,7 @@ __pycache__/
 /dist/
 /build/
 *.egg-info/
+
+# OS Files
+.DS_Store
+Thumbs.db
